@@ -1,0 +1,43 @@
+This class is used for having UITableViewCell's that have UIControl instances as subviews.  Typically, you want the target of these UIControls to be the controller responsible for the table view that the cell belongs to. You also want to know from which index path the control was tapped. Tagging a cell with a number is insufficient and clumsy, so BNRXIBCell takes another approach. BNRXIBCell also hides the registration process. I've only barely just tested it, but it works for now. I may also add model object binding if I feel like it makes configuring a cell easier.
+
+Usage: 
+
+1. Create a subclass of BNRXIBCell. 
+
+2. Create a XIB file where the first top-level object is an instance of your BNRXIBCell subclass.
+
+3. For all UIControl action messages, declare them in the BNRXIBCell subclass. 
+ex.
+
+@interface MyCell : BNRXIBCell
+- (IBAction)action:(id)sender;
+@end
+
+4. Connect UIControl instances in XIB file to the cell subclass in the outline view (not the file's owner).
+
+5. Implement the action as follows:
+
+- (IBAction)action:(id)sender
+{
+   ROUTE(sender);
+}
+
+6. In your controller, use the cells like so:
+
+- (UITableViewCell *)tableView:(UITableView *)tv
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // This takes care of registering the NIB or class.
+    MyCell *cell = [MyCell cellForTableView:tv target:self];
+    
+    // configure cell
+    
+    return cell;
+}
+
+7. Then, implement the action method in your controller. The first label of the selector must always be the same as the IBAction and the second label must always be atIndexPath:
+
+- (void)action:(id)sender atIndexPath:(NSIndexPath *)ip
+{
+    NSLog(@"Control event from %@ at %@", sender, ip);
+}
