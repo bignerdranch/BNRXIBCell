@@ -4,7 +4,7 @@ Usage:
 
 1. Create a subclass of BNRXIBCell. 
 
-2. Create a XIB file where the first top-level object is an instance of your BNRXIBCell subclass.
+2. Create a XIB file where the first top-level object is an instance of your BNRXIBCell subclass by dragging a UITableViewCell onto the canvas and changing its identity.
 
 3. For all UIControl action messages, declare them in the BNRXIBCell subclass. 
 ex.
