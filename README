@@ -1,4 +1,4 @@
-This class is used for having UITableViewCell's that have UIControl instances as subviews.  Typically, you want the target of these UIControls to be the controller responsible for the table view that the cell belongs to. You also want to know from which index path the control was tapped. Tagging a cell with a number is insufficient and clumsy, so BNRXIBCell takes another approach. BNRXIBCell also hides the registration process. I've only barely just tested it, but it works for now. I may also add model object binding if I feel like it makes configuring a cell easier.
+This class is a superclass for UITableViewCells that have UIControl instances as subviews.  Typically, you want the target of these UIControls to be the controller responsible for the table view that the cell belongs to. You also want to know from which index path the control was tapped. Tagging a cell with a number is insufficient and clumsy, so BNRXIBCell takes another approach. BNRXIBCell also hides the registration process. I've only barely just tested it, but it works for now. I may also add model object binding if I feel like it makes configuring a cell easier.
 
 Usage: 
 
