@@ -57,7 +57,8 @@
 {
 	SEL newSel = NSSelectorFromString([NSStringFromSelector(msg) stringByAppendingFormat:@"atIndexPath:"]);
 	NSIndexPath *ip = [[self currentTableView] indexPathForCell:self];
-	[obj performSelector:newSel withObject:ctl withObject:ip];
+    if(ip)
+        [obj performSelector:newSel withObject:ctl withObject:ip];
 }
 
 
